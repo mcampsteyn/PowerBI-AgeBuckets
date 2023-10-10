@@ -1,0 +1,14 @@
+AgeBuckets2 = 
+VAR BucketSize = 5
+
+RETURN ADDCOLUMNS(
+SELECTCOLUMNS (
+    GENERATESERIES(0, 150, 1),
+    "Age", [Value]
+    ),
+"Bucket_From_Age",IF([Age] <= BucketSize, 0, ROUNDDOWN(([Age]-1)/BucketSize,0)*BucketSize+1),
+"Bucket_To_Age",ROUNDDOWN(([Age]-1)/BucketSize,0)*BucketSize+BucketSize,
+"Bucket",   IF([Age] > 100, "+100",
+            FORMAT(IF([Age] <= BucketSize, 0, ROUNDDOWN(([Age]-1)/BucketSize,0)*BucketSize+1),"00") & "-" & FORMAT(ROUNDDOWN(([Age]-1)/BucketSize,0)*BucketSize+BucketSize,"00")
+            )
+)
