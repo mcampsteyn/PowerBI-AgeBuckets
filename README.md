@@ -1,4 +1,4 @@
-# PowerBi - Age Buckets
+# PowerBI - Age Buckets
 
 Displaying data across an age dimension by year can sometimes be too granular. Grouping multiple years into buckets can help to have more meaningful and condensed visuals. This repository contains two version of a DAX script to create age buckets in Power BI.
 
